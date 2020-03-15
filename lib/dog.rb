@@ -7,6 +7,7 @@ class Dog
     @name = name 
     @breed = breed 
   end
+  
   def self.create_table
     sql = <<-SQL
       CREATE TABLE IF NOT EXISTS dogs (
@@ -56,12 +57,10 @@ class Dog
   end
 
   def self.new_from_db(row)
-    attributes_hash = {
-      :id => row[0],
-      :name => row[1],
-      :breed => row[2]
-    }
-    self.new(attributes_hash)
+      id = row[0],
+      name = row[1],
+      breed = row[2]
+    self.new(id,name,breed)
   end
 
   def self.find_or_create_by(name:, breed:)
